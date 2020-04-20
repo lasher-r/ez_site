@@ -57,8 +57,6 @@ if __name__ == "__main__":
     html += path_to_html("/Users/richard/Documents/lasher_dev")
 
     html += '''
-    </body>
-
     <script>
     '''
 
@@ -67,6 +65,8 @@ if __name__ == "__main__":
 
     html += '''
     </script>
+    </body>
+    </html>
     '''
 
     with open("dir.html", "w") as f:
