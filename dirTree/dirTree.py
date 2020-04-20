@@ -1,5 +1,4 @@
 import os
-import json
 
 def path_to_html(path):
     """Wraps the directory html in a ul that allows collapsing"""
@@ -9,7 +8,6 @@ def path_to_html_inner(path):
     """gets a directory tree and returns it as html ul
     With css/js tags to allow formating and collapsing"""
     tree = path_to_dict(path)
-    json_tree = json.dumps(tree, indent=2)
     html = ''
     # for t in tree:
     if tree["type"] == "directory":
@@ -29,7 +27,7 @@ def path_to_html_inner(path):
     return html
 
 def path_to_dict(path):
-    """gets a directory tree and returns it as nested json"""
+    """gets a directory tree and returns it as nested dict"""
     name = os.path.basename(path)
     if name[0] == '.':
         return
