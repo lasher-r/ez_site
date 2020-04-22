@@ -86,6 +86,7 @@ def script():
     </script>
     '''
 
+
 def fake_script():
     return '''
     <script>
@@ -107,3 +108,16 @@ def fake_script():
       }
     </script>
     '''
+
+
+def wrap_content(contentPages):
+  contentHtml = "\n<div id=\"content\" class=\"w3-container w3-cell\">"
+  for content in contentPages:
+      contentHtml += "\n%s" % content
+  contentHtml += "\n</div>"
+
+  return contentHtml
+
+def wrap_sb_contnet(sideBarHtml, contentHtml):
+    html = "\n<div id=\"sb_content\" class=\"w3-cell-row\">"+sideBarHtml+contentHtml+"\n</div>"
+    return html
