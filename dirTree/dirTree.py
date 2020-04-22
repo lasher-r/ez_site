@@ -4,7 +4,7 @@ def path_to_html(path):
     """Wraps the directory html in a ul that allows collapsing"""
     return '''
         <div id="sb" class="w3-container w3-cell w3-rightbar" style="width: 20%;">
-            <ul id="myUL">'''+path_to_html_inner(path)+'''</ul>
+            <ul id="myUL">'''+path_to_html_inner(path).replace(path.replace('/','_'), '')+'''</ul>
         </div>
 '''
 
@@ -27,7 +27,7 @@ def path_to_html_inner(path):
 
         html += "</li>\n"  # line 10
     else:
-        html = "<li>%s</li>\n" % tree["name"]
+        html = "<li onclick=\"hideContent(\'%s\')\">%s</li>\n" % (tree["path"].replace('/','_'), tree["name"])
     return html
 
 def path_to_dict(path):

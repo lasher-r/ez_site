@@ -48,20 +48,21 @@ def as_page(path):
     html += "\n<body>"
 
     html += "\n<div id=\"sb_content\" class=\"w3-cell-row\">"
+
     html += sideBarHtml
 
     html += "\n<div id=\"content\" class=\"w3-container w3-cell\">"
-
     for content in contentPages:
         html += "\n%s" % content
-
+    html += "\n</div>"
+    
     html += "\n</div>"
 
-    html += myhtml.fake_script()
+    html += myhtml.script()
 
     html += "\n</body>"
 
-    html +="</html>"
+    html +="\n</html>"
 
     return html
 

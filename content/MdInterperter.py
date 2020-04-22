@@ -10,7 +10,7 @@ def translate_file(path, root='/'):
     localPath = sanitize_name(localPath)
     if file_extension == ".md":
         html = markdown2.markdown_path(path)
-        html = "<div id=\"settup_content\" class=\"w3-hide\">\n%s\n</div>" % html
+        html = "<div id=\"%s\" class=\"w3-hide\">\n%s\n</div>" % (localPath+filename+'.md', html)
         return html
     else:
         return None

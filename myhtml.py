@@ -1,6 +1,7 @@
 def head():
     return '''
 <head>
+    <meta charset="utf-8"/>
     <style>
         html {
         height: 100%;
@@ -59,13 +60,16 @@ def script():
     return '''
     <script>
       function hideContent(param) {
-          alert(param)
-        var x = document.getElementById("settup_content");
-        if (x.className.indexOf("w3-show") == -1) {
-          x.className += " w3-show";
-        } else {
-          x.className = x.className.replace(" w3-show", "");
+        let div = document.getElementById("content");
+
+        for (var i=0; i<div.children.length; i++) {
+          var child = div.children[i];
+          child.className = child.className.replace(" w3-show", "");
         }
+
+        let content = document.getElementById(param);
+        content.className += " w3-show";
+
       }
 
       var toggler = document.getElementsByClassName("caret");
@@ -85,6 +89,11 @@ def script():
 def fake_script():
     return '''
     <script>
+
+      function hideContent(param) {
+        alert(param)
+      }
+
       var toggler = document.getElementsByClassName("caret");
       var i;
 
