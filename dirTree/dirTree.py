@@ -2,7 +2,11 @@ import os
 
 def path_to_html(path):
     """Wraps the directory html in a ul that allows collapsing"""
-    return "<ul id=\"myUL\">\n"+path_to_html_inner(path)+"</ul>\n"
+    return '''
+        <div id="sb" class="w3-container w3-cell w3-rightbar" style="width: 20%;">
+            <ul id="myUL">'''+path_to_html_inner(path)+'''</ul>
+        </div>
+'''
 
 def path_to_html_inner(path):
     """gets a directory tree and returns it as html ul
@@ -40,35 +44,7 @@ def path_to_dict(path):
     return d
 
 if __name__ == "__main__":
-    html = '''<!DOCTYPE html>
-    <html>
-    <head>
-    <style>
-    '''
-    with open('dirTree/dirTree.css', 'r') as css:
-        html += css.read()
-    
-    html += '''
-    </style>
-    </head>
-    <body>
-    '''
-
-    html += path_to_html("/Users/richard/Documents/lasher_dev")
-
-    html += '''
-    <script>
-    '''
-
-    with open('dirTree/dirTree.js', 'r') as js:
-        html += js.read()
-
-    html += '''
-    </script>
-    </body>
-    </html>
-    '''
-
+    html = path_to_html("/Users/richard/Documents/lasher_dev")
     with open("dir.html", "w") as f:
         f.write(html)
 
