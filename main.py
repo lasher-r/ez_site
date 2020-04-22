@@ -65,7 +65,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if os.path.isdir(args.publish):
-        print('creating page %s' % args.publish)
-        html = as_page(args.publish) #'/Users/richard/Documents/lasher_dev')
+        print('creating page for %s' % args.publish)
+        html = as_page(os.path.abspath(args.publish)) #'/Users/richard/Documents/lasher_dev')
         with open("page.html", "w") as f:
             f.write(html)
