@@ -2,6 +2,9 @@ from dirTree import dirTree
 from content import MdInterperter
 import myhtml
 
+import argparse
+import os
+
 def flatten_files(root, files=[]):
     for path in root['children']:
         if not path:
@@ -57,6 +60,12 @@ def as_page(path):
     return html
 
 if __name__ == "__main__":
-    html = as_page('/Users/richard/Documents/lasher_dev')
-    with open("page.html", "w") as f:
-        f.write(html)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--publish", help="create webpage")
+    args = parser.parse_args()
+
+    if os.path.isdir(args.publish):
+        print('creating page %s' % args.publish)
+        html = as_page(args.publish) #'/Users/richard/Documents/lasher_dev')
+        with open("page.html", "w") as f:
+            f.write(html)
