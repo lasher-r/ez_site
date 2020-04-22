@@ -31,7 +31,7 @@ def path_to_dict(path):
     name = os.path.basename(path)
     if name[0] == '.':
         return
-    d = {'name': name}
+    d = {'name': name, 'path': path}
     if os.path.isdir(path):
         d['type'] = "directory"
         d['children'] = [path_to_dict(os.path.join(path,x)) for x in os.listdir(path)]
