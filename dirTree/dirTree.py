@@ -46,8 +46,4 @@ def path_to_dict(path):
         d['type'] = "file"
     return d
 
-if __name__ == "__main__":
-    html = path_to_html("/Users/richard/Documents/lasher_dev")
-    with open("dir.html", "w") as f:
-        f.write(html)
 

@@ -26,7 +26,7 @@ def run(path):
         if page:
             contentPages.append(page)
     
-    sideBarHtml = dirTree.path_to_html("/Users/richard/Documents/lasher_dev")
+    sideBarHtml = dirTree.path_to_html(path)
 
 def as_page(path):
     # get files
@@ -45,7 +45,7 @@ def as_page(path):
     headerHtml = MdInterperter.translate_header(path)
     
     # make sidebar
-    sideBarHtml = dirTree.path_to_html("/Users/richard/Documents/lasher_dev")
+    sideBarHtml = dirTree.path_to_html(path)
 
     # wrap sidebar and content together
     sidebarContentHtml = myhtml.wrap_sb_contnet(sideBarHtml, contentHtml)

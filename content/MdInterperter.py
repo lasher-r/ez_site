@@ -23,8 +23,3 @@ def translate_file(path, root='/'):
         return html
     else:
         return None
-
-if __name__ == "__main__":
-    html = translate_file('/Users/richard/Documents/lasher_dev/cheatsheats/utils.md', root='lasher_dev')
-    with open("content.html", "w") as f:
-        f.write(html)
