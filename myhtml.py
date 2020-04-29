@@ -10,6 +10,15 @@ def head():
         min-height: 100%;
         }
 
+        header {
+        text-align: justify;
+        letter-spacing: 1px;
+        height: 8em;
+        padding: 2em 10%;
+        background: #ccc;
+        text-align: center;
+        }
+
         /* Remove default bullets */
         ul,
         #myUL {

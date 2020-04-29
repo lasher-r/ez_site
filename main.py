@@ -40,6 +40,9 @@ def as_page(path):
         if page:
             contentPages.append(page)
     contentHtml = myhtml.wrap_content(contentPages)
+
+    # header
+    headerHtml = MdInterperter.translate_header(path)
     
     # make sidebar
     sideBarHtml = dirTree.path_to_html("/Users/richard/Documents/lasher_dev")
@@ -52,6 +55,7 @@ def as_page(path):
     html += "\n<html>"
     html += myhtml.head()
     html += "\n<body>"
+    html += headerHtml
     html += sidebarContentHtml
     html += myhtml.script()
     html += "\n</body>"
@@ -64,7 +68,7 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--publish", help="create webpage")
     args = parser.parse_args()
 
-    if os.path.isdir(args.publish):
+    if args.publish and os.path.isdir(args.publish):
         print('creating page for %s' % args.publish)
         html = as_page(os.path.abspath(args.publish)) #'/Users/richard/Documents/lasher_dev')
         with open("page.html", "w") as f:
