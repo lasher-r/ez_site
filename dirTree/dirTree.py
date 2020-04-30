@@ -30,7 +30,7 @@ def path_to_html_inner(path):
         if tree["name"] == '__HEADER__.md':
             html = ""
         else:
-            html = "<li onclick=\"hideContent(\'%s\')\">%s</li>\n" % (tree["path"].replace('/','_'), tree["name"])
+            html = "<li onclick=\"hideContent(\'%s\')\">%s</li>\n" % (tree["path"].replace('/','_'), tree["name"].replace('.md', ''))
     return html
 
 def path_to_dict(path):

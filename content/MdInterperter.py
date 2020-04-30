@@ -18,7 +18,7 @@ def translate_file(path, root='/'):
     if filename == '__HEADER__':
         return None
     if file_extension == ".md":
-        html = markdown2.markdown_path(path)
+        html = markdown2.markdown_path(path, extras=["fenced-code-blocks"])
         html = "<div id=\"%s\" class=\"w3-hide\">\n%s\n</div>" % (localPath+filename+'.md', html)
         return html
     else:
