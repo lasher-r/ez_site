@@ -1,6 +1,6 @@
 from dirTree import dirTree
 from content import MdInterperter
-import myhtml
+from web import myhtml, css
 
 import argparse
 import os
@@ -34,12 +34,8 @@ def as_page(path):
     ff = flatten_files(files_dict)
 
     # make content html
-    contentPages = []
-    for f in ff:
-        page = MdInterperter.translate_file(f, path)
-        if page:
-            contentPages.append(page)
-    contentHtml = myhtml.wrap_content(contentPages)
+    contentDivs = MdInterperter.translate_files(path, ff)
+    contentHtml = myhtml.wrap_content(contentDivs)
 
     # header
     headerHtml = MdInterperter.translate_header(path)
@@ -73,3 +69,5 @@ if __name__ == "__main__":
         html = as_page(os.path.abspath(args.publish)) #'/Users/richard/Documents/lasher_dev')
         with open("page.html", "w") as f:
             f.write(html)
+        css.save_css()
+        css.save_custom_css(os.path.abspath(args.publish))

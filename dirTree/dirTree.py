@@ -27,7 +27,7 @@ def path_to_html_inner(path):
 
         html += "</li>\n"  # line 10
     else:
-        if tree["name"] == '__HEADER__.md':
+        if tree["name"] == '__HEADER__.md' or tree["name"] == "__css__.css":
             html = ""
         else:
             html = "<li onclick=\"hideContent(\'%s\')\">%s</li>\n" % (tree["path"].replace('/','_'), tree["name"].replace('.md', ''))

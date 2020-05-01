@@ -10,6 +10,13 @@ def translate_header(path):
     html = "<header>%s</header>" % html
     return html
 
+def translate_files(path, files):
+    contentPages = []
+    for f in files:
+        page = translate_file(f, path)
+        if page:
+            contentPages.append(page)
+    return contentPages
 
 def translate_file(path, root='/'):
     filename, file_extension = os.path.splitext(os.path.basename(path))
