@@ -19,5 +19,6 @@
 
  https://pages.github.com/
 
- pipenv run python3 main.py -b /Users/richard/Documents/lasher_dev
- pipenv run python3 main.py -p git@github.com:lasher-r/lasher-r.github.io.git
+ `pipenv run python3 main.py -b [directory to build]`
+
+ `pipenv run python3 main.py -p [github pages repo]`
