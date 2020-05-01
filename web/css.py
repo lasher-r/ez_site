@@ -63,15 +63,15 @@ height: 100%
 }
 '''
 
-def save_css():
-    with open("page.css", "w") as f:
+def save_css(dest):
+    with open(os.path.join(dest,"page.css"), "w") as f:
         f.write(css)
 
-def save_custom_css(path):
+def save_custom_css(dest, path):
     css_file = os.path.join(path, '__css__.css')
     if not os.path.isfile(css_file):
         return
     with open(css_file) as f:
         customCss = f.read()
-        with open("custom.css", "w") as f:
+        with open(os.path.join(dest,"custom.css"), "w") as f:
             f.write(customCss)

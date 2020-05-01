@@ -8,6 +8,7 @@ autopep8 = "*"
 
 [packages]
 markdown2 = "*"
+sh = "*"
 
 [requires]
 python_version = "3.7"

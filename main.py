@@ -1,6 +1,7 @@
 from dirTree import dirTree
 from content import MdInterperter
 from web import myhtml, css
+from publish import publishGit
 
 import argparse
 import os
@@ -60,14 +61,24 @@ def as_page(path):
     return html
 
 if __name__ == "__main__":
+    tempdir = '/tmp/pn'
     parser = argparse.ArgumentParser()
+    parser.add_argument("-b", "--build", help="build webpage files")
     parser.add_argument("-p", "--publish", help="create webpage")
     args = parser.parse_args()
 
-    if args.publish and os.path.isdir(args.publish):
-        print('creating page for %s' % args.publish)
-        html = as_page(os.path.abspath(args.publish)) #'/Users/richard/Documents/lasher_dev')
-        with open("page.html", "w") as f:
+    if args.build and os.path.isdir(args.build):
+        print('creating page for %s' % args.build)
+        html = as_page(os.path.abspath(args.build)) #'/Users/richard/Documents/lasher_dev')
+        with open(os.path.join(tempdir,"index.html"), "w") as f:
             f.write(html)
-        css.save_css()
-        css.save_custom_css(os.path.abspath(args.publish))
+        css.save_css(tempdir)
+        css.save_custom_css(tempdir, os.path.abspath(args.build))
+        print('\n\nto preview with docker run:')
+        print('\tdocker run -it -p 8080:80 -v /tmp/pn/:/usr/local/apache2/htdocs/ httpd:2.4')
+        print('and navigate to localhost:8080\n\n')
+    elif args.publish:
+        print('pushing website to %s' % args.publish)
+        publisher = publishGit.GitPublish('/tmp/pn', args.publish)
+        publisher.publish()
+        print('\n\nIt may take a minute for github pages to reflect changes\n\n')
